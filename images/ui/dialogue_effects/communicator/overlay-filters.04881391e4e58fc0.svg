@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!-- Boost source particle coverage, preserving transparent pixels and detail. -->
+  <filter id="portrait-strength" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%">
+    <feComponentTransfer>
+      <feFuncA type="linear" slope="2" intercept="0" />
+    </feComponentTransfer>
+  </filter>
+</svg>

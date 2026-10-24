@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "valid": true,
+  "assets_checked": 17968,
+  "sha256_verified": true,
+  "payload_bytes": 1137942865,
+  "registry_sha256": "40a813b6ce5cefa9289804d4ec7822764b6995cd3f0b84e161c9c7ef2587d27b",
+  "registry_shards": 256,
+  "categories": {
+    "battle_images": 341,
+    "blessings": 70,
+    "chapter_artwork": 25,
+    "characters": 516,
+    "classes": 6,
+    "collection_cards": 21,
+    "dialogue_effects": 11,
+    "dialogue_portraits": 8578,
+    "exclusive": 127,
+    "factions": 7,
+    "fish_images": 41,
+    "items": 1853,
+    "mail_images": 2,
+    "player_presets": 383,
+    "skill-tips": 8,
+    "skills": 194,
+    "voice": 5785
+  },
+  "portrait_classifications": {
+    "mobs": 463,
+    "npc": 6396,
+    "playable": 1413,
+    "unclassified": 306
+  },
+  "voices_by_language": {
+    "cn": 1445,
+    "en": 1448,
+    "jp": 1446,
+    "kr": 1446
+  },
+  "largest_file_bytes": 1693462,
+  "maximum_directory_entries": 256,
+  "maximum_directory_depth": 5,
+  "git_file_size_limit_pass": true,
+  "unregistered_payload_files": 0,
+  "source_assets_modified": false
+}

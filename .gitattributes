@@ -1,0 +1,24 @@
+* text=auto
+*.json text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.svg binary
+.gitignore text eol=lf
+.gitattributes text eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.webm binary
+*.ogg binary
+*.opus binary
+*.mp3 binary
+*.m4a binary
+*.aac binary
+*.wav binary
+*.flac binary
+*.mp4 binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
