@@ -74,6 +74,10 @@ def verify(root, workers=8):
         'manifests/index.json', 'manifests/migration.json', 'inventory.json')]
     require(index['schema_version'] == migration['schema_version'] == inventory['schema_version'] == 1,
             'Unsupported registry schema')
+    naming = index.get('capture_filename_policy')
+    require(naming in {None, 'stable-pose'}
+            and migration.get('capture_filename_policy') == naming
+            and inventory.get('capture_filename_policy') == naming, 'Capture filename policies differ')
     shards = index['entries']
     require(len(shards) == len(set(shards)), 'Repeated registry shard')
     require(migration['shards'] == shards and migration['mapping_fields'] == ['source_reference', 'reference'],
@@ -106,8 +110,10 @@ def verify(root, workers=8):
         transform = json.dumps([row['source_sha256'], row['transform']],
                                ensure_ascii=False, separators=(',', ':')).encode()
         revision = hashlib.sha256(transform).hexdigest()[:16]
-        require(row['revision'] == revision and Path(name).stem.endswith('.' + revision),
-                f'Wrong filename revision: {name}')
+        stable = naming == 'stable-pose' and row['category'] in {'dialogue_portraits', 'player_presets'}
+        require(row['revision'] == revision, f'Wrong manifest revision: {name}')
+        if not stable:
+            require(Path(name).stem.endswith('.' + revision), f'Wrong filename revision: {name}')
         relative_name(row['source_path'])
         categories[row['category']] += 1
         total_bytes += row['bytes']
@@ -115,7 +121,8 @@ def verify(root, workers=8):
             kind, model, pose = row['classification'], row['model'], row['pose']
             require(kind in {'playable', 'npc', 'mobs', 'unclassified'}, f'Unknown portrait kind: {name}')
             bucket = str(row['unit_id']) if kind == 'playable' else hashlib.sha256(model.encode()).hexdigest()[:2]
-            expected = f'images/dialogue_portraits/{kind}/{bucket}/{model}/{pose}.{revision}.webp'
+            suffix = '' if stable else '.' + revision
+            expected = f'images/dialogue_portraits/{kind}/{bucket}/{model}/{pose}{suffix}.webp'
             require(name == expected, f'Wrong portrait layout: {name}')
             require(row.get('classification_evidence') in {'playable_roster', 'source_resource', 'unclassified'},
                     f'Missing portrait classification evidence: {name}')
@@ -124,7 +131,8 @@ def verify(root, workers=8):
             preset = row['preset']
             require(preset['gender'] in {'male', 'female'}, f'Unknown preset gender: {name}')
             require(re.fullmatch(r'default|s0[1-8]', preset['group']), f'Unknown preset group: {name}')
-            expected = f'images/player_presets/{preset["group"]}/{preset["gender"]}/{preset["id"]}/{row["pose"]}.{revision}.webp'
+            suffix = '' if stable else '.' + revision
+            expected = f'images/player_presets/{preset["group"]}/{preset["gender"]}/{preset["id"]}/{row["pose"]}{suffix}.webp'
             require(name == expected, f'Wrong player preset layout: {name}')
             require(row.get('capture_job') and preset.get('prefab_guid') and preset.get('recipe_sha256'),
                     f'Missing player capture provenance: {name}')
