@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-28",
+  "lighting_revision": "recovered-lighting-20261028-v1",
+  "dialogue_portraits": 8601,
+  "saved_player_appearance_portraits": 293,
+  "player_previews": 90,
+  "replaced_media_files": 8976,
+  "additional_portraits": [
+    {
+      "model": "opera_s1",
+      "pose": "reject_loop"
+    },
+    {
+      "model": "opera_s1",
+      "pose": "spec3_loop"
+    },
+    {
+      "model": "stormgod",
+      "pose": "think_loop"
+    },
+    {
+      "model": "stormgod",
+      "pose": "hurry_loop"
+    },
+    {
+      "model": "opera_s1",
+      "pose": "spec2_loop"
+    },
+    {
+      "model": "stormgod",
+      "pose": "normal"
+    },
+    {
+      "model": "opera_s1",
+      "pose": "approve_loop"
+    },
+    {
+      "model": "opera_s1",
+      "pose": "normal"
+    }
+  ],
+  "preserved": [
+    "approved face crops",
+    "separate choice framing",
+    "saved animation phases",
+    "stable media identities"
+  ],
+  "validation": {
+    "source_and_output_sha256": true,
+    "all_new_webp_decodable": true,
+    "regression_tests": {
+      "python": 57,
+      "javascript": 20
+    },
+    "media_delivery_tests": 4
+  },
+  "lighting_profiles": {
+    "default": "dialogue",
+    "stormgod": "hero_marene"
+  },
+  "note": "Approved reconstructed lighting; exact live scene environment matching remains outside this capture profile."
+}

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "valid": true,
-  "assets_checked": 17968,
+  "assets_checked": 17991,
   "sha256_verified": true,
-  "payload_bytes": 1137942865,
-  "registry_sha256": "40a813b6ce5cefa9289804d4ec7822764b6995cd3f0b84e161c9c7ef2587d27b",
+  "payload_bytes": 1189897067,
+  "registry_sha256": "a7d91ec8e5f4e580f019cc41784fa852f2fd798fc977bf4e1889064ad3764d90",
   "registry_shards": 256,
   "categories": {
     "battle_images": 341,
@@ -14,7 +14,7 @@
     "classes": 6,
     "collection_cards": 21,
     "dialogue_effects": 11,
-    "dialogue_portraits": 8578,
+    "dialogue_portraits": 8601,
     "exclusive": 127,
     "factions": 7,
     "fish_images": 41,
@@ -26,10 +26,10 @@
     "voice": 5785
   },
   "portrait_classifications": {
-    "mobs": 463,
-    "npc": 6396,
-    "playable": 1413,
-    "unclassified": 306
+    "mobs": 467,
+    "npc": 6407,
+    "playable": 1416,
+    "unclassified": 311
   },
   "voices_by_language": {
     "cn": 1445,
