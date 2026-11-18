@@ -7,6 +7,11 @@ import json
 import os
 from pathlib import Path, PurePosixPath
 import re
+import importlib.util
+
+_name_spec = importlib.util.spec_from_file_location('tea_media_filenames', Path(__file__).with_name('media_filenames.py'))
+_names = importlib.util.module_from_spec(_name_spec)
+_name_spec.loader.exec_module(_names)
 
 
 def require(condition, message):
@@ -78,6 +83,10 @@ def verify(root, workers=8):
     require(naming in {None, 'stable-pose'}
             and migration.get('capture_filename_policy') == naming
             and inventory.get('capture_filename_policy') == naming, 'Capture filename policies differ')
+    all_names = index.get('filename_policy')
+    require(all_names in {None, _names.POLICY}
+            and migration.get('filename_policy') == all_names
+            and inventory.get('filename_policy') == all_names, 'Media filename policies differ')
     shards = index['entries']
     require(len(shards) == len(set(shards)), 'Repeated registry shard')
     require(migration['shards'] == shards and migration['mapping_fields'] == ['source_reference', 'reference'],
@@ -110,10 +119,13 @@ def verify(root, workers=8):
         transform = json.dumps([row['source_sha256'], row['transform']],
                                ensure_ascii=False, separators=(',', ':')).encode()
         revision = hashlib.sha256(transform).hexdigest()[:16]
-        stable = naming == 'stable-pose' and row['category'] in {'dialogue_portraits', 'player_presets'}
+        stable = all_names == _names.POLICY or (naming == 'stable-pose' and row['category'] in {'dialogue_portraits', 'player_presets'})
         require(row['revision'] == revision, f'Wrong manifest revision: {name}')
         if not stable:
             require(Path(name).stem.endswith('.' + revision), f'Wrong filename revision: {name}')
+        if all_names == _names.POLICY:
+            require(_names.stable_path(name, revision, row.get('resource_path'), row.get('readable_stem')) == name,
+                    f'Unstable media filename: {name}')
         relative_name(row['source_path'])
         categories[row['category']] += 1
         total_bytes += row['bytes']

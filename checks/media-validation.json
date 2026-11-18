@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "valid": true,
-  "assets_checked": 19836,
+  "assets_checked": 19839,
   "sha256_verified": true,
-  "payload_bytes": 1311250072,
-  "registry_sha256": "39109c7e853f6b5c71ebcd71d29f5c421d2db4cbde2ad65efcd4544164f4ca14",
+  "payload_bytes": 1311530149,
+  "registry_sha256": "51d3a1749fcb8dbd29acc88deb70763930ffcb479d6596c2e5acadf11ed741ea",
   "registry_shards": 256,
   "categories": {
     "battle_images": 341,
@@ -18,7 +18,7 @@
     "exclusive": 130,
     "factions": 7,
     "fish_images": 41,
-    "items": 2009,
+    "items": 2012,
     "mail_images": 5,
     "player_presets": 383,
     "skill-tips": 8,
