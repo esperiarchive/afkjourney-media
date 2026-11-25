@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "valid": true,
-  "assets_checked": 20242,
+  "assets_checked": 20361,
   "sha256_verified": true,
-  "payload_bytes": 1346490090,
-  "registry_sha256": "5fd6bcc921c565600a3564cb1861c5e6afad4386b6d209ab459ba8e2951adb6a",
+  "payload_bytes": 1351170764,
+  "registry_sha256": "23a467a5ff4e32ea181ef29c49a266492f81d943fe186b9c50cb23bb8fa593df",
   "registry_shards": 256,
   "categories": {
     "battle_images": 341,
     "blessings": 70,
     "chapter_artwork": 25,
-    "characters": 531,
+    "characters": 540,
     "classes": 6,
     "collection_cards": 21,
     "dialogue_effects": 11,
@@ -23,7 +23,7 @@
     "player_presets": 383,
     "skill-tips": 8,
     "skills": 200,
-    "voice": 5785,
+    "voice": 5895,
     "world_archive_enemies": 369,
     "world_archive_fish": 235,
     "world_archive_skills": 139
@@ -35,10 +35,10 @@
     "unclassified": 345
   },
   "voices_by_language": {
-    "cn": 1445,
-    "en": 1448,
-    "jp": 1446,
-    "kr": 1446
+    "cn": 1457,
+    "en": 1491,
+    "jp": 1490,
+    "kr": 1457
   },
   "largest_file_bytes": 1992130,
   "maximum_directory_entries": 369,
